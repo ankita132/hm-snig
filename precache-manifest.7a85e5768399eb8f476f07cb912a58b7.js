@@ -4,23 +4,23 @@ self.__precacheManifest = [
     "url": "/nehru-hall/static/js/runtime~main.62e50522.js"
   },
   {
-    "revision": "c8e95875ce0a6714b65a",
-    "url": "/nehru-hall/static/js/main.5a64ae33.chunk.js"
+    "revision": "f42e04180fffd4993fbd",
+    "url": "/nehru-hall/static/js/main.8340e02c.chunk.js"
   },
   {
-    "revision": "eb1f17c42603d6b688a7",
-    "url": "/nehru-hall/static/js/2.e6d8fc6b.chunk.js"
+    "revision": "eb1a5d0f4331416a73ad",
+    "url": "/nehru-hall/static/js/2.e697a78a.chunk.js"
   },
   {
-    "revision": "c8e95875ce0a6714b65a",
+    "revision": "f42e04180fffd4993fbd",
     "url": "/nehru-hall/static/css/main.e34c3abf.chunk.css"
   },
   {
-    "revision": "eb1f17c42603d6b688a7",
+    "revision": "eb1a5d0f4331416a73ad",
     "url": "/nehru-hall/static/css/2.f359485a.chunk.css"
   },
   {
-    "revision": "5ec56edcd28d2ac5a4c8a9937a1ba26e",
+    "revision": "dc6b5c480ad3038e55ecadca658253b4",
     "url": "/nehru-hall/index.html"
   }
 ];

@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/nehru-hall/precache-manifest.6fee815387f24181995acaa060730932.js"
+  "/nehru-hall/precache-manifest.7a85e5768399eb8f476f07cb912a58b7.js"
 );
 
 workbox.clientsClaim();
