@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { Table, Button, Modal } from "antd";
+import { Table, Button, Modal, List, Icon } from "antd";
 
 class Student extends Component {
 	constructor() {
 		super();
 		this.state = {
 			visible: false,
+			visible3: false,
 			imageIndex: 0,
 			dataSource: [
 				{
@@ -15,7 +16,10 @@ class Student extends Component {
 					purpose: "no idea",
 					gst: "1234",
 					view: <Button onClick={() => this.showModal(0)}>View Bill</Button>,
-					status: "Approved"
+					status: "Approved",
+					vstatus: (
+						<Button onClick={() => this.showModal3()}>Verifications</Button>
+					)
 				},
 				{
 					key: "2",
@@ -24,7 +28,10 @@ class Student extends Component {
 					purpose: "no no idea",
 					gst: "123412",
 					view: <Button onClick={() => this.showModal(1)}>View Bill</Button>,
-					status: "Declined"
+					status: "Declined",
+					vstatus: (
+						<Button onClick={() => this.showModal3()}>Verifications</Button>
+					)
 				},
 				{
 					key: "3",
@@ -33,13 +40,16 @@ class Student extends Component {
 					purpose: "no no no idea",
 					gst: "12",
 					view: <Button onClick={() => this.showModal(2)}>View Bill</Button>,
-					status: "Pending"
+					status: "Pending",
+					vstatus: (
+						<Button onClick={() => this.showModal3()}>Verifications</Button>
+					)
 				}
 			],
 			img: [
-				"https://pay.google.com/about/static/images/social/knowledge_graph_logo.png",
-				"https://pay.google.com/about/static/images/social/knowledge_graph_logo.png",
-				"https://pay.google.com/about/static/images/social/knowledge_graph_logo.png"
+				"http://www.uppclonline.com/en_GB/images/innerpages/login/bill_sample.jpg",
+				"http://www.uppclonline.com/en_GB/images/innerpages/login/bill_sample.jpg",
+				"http://www.uppclonline.com/en_GB/images/innerpages/login/bill_sample.jpg"
 			],
 			columns: [
 				{
@@ -71,11 +81,42 @@ class Student extends Component {
 					title: "Status",
 					dataIndex: "status",
 					key: "status"
+				},
+				{
+					title: "Verification Status",
+					dataIndex: "vstatus",
+					key: "vstatus"
+				}
+			],
+			data: [
+				{
+					name: "Verified by G. Sec Social and Cultural",
+					status: true
+				},
+				{
+					name: "Verified by the concerned PTI",
+					status: false
+				},
+				{
+					name: "Hard copy submitted",
+					status: false
+				},
+				{
+					name: "Verified by the Registrar",
+					status: true
+				},
+				{
+					name: "Verified by the President TSG",
+					status: true
 				}
 			]
 		};
 	}
-
+	showModal3 = () => {
+		this.setState({
+			visible3: true
+		});
+	};
 	showModal = k => {
 		this.setState({
 			visible: true,
@@ -86,14 +127,16 @@ class Student extends Component {
 	handleOk = e => {
 		console.log(e);
 		this.setState({
-			visible: false
+			visible: false,
+			visible3: false
 		});
 	};
 
 	handleCancel = e => {
 		console.log(e);
 		this.setState({
-			visible: false
+			visible: false,
+			visible3: false
 		});
 	};
 	render() {
@@ -113,6 +156,36 @@ class Student extends Component {
 						src={this.state.img[this.state.imageIndex]}
 						alt="billimage"
 						width="400"
+					/>
+				</Modal>
+				<Modal
+					title="Verification Status"
+					visible={this.state.visible3}
+					onOk={this.handleOk}
+					onCancel={this.handleCancel}
+				>
+					<List
+						dataSource={this.state.data}
+						renderItem={item => (
+							<List.Item key={item.name}>
+								<List.Item.Meta title={<h2>{item.name}</h2>} />
+								<div>
+									{item.status ? (
+										<Icon
+											type="check-circle"
+											theme="filled"
+											style={{ color: "green" }}
+										/>
+									) : (
+										<Icon
+											type="exclamation-circle"
+											theme="filled"
+											style={{ color: "orange" }}
+										/>
+									)}
+								</div>
+							</List.Item>
+						)}
 					/>
 				</Modal>
 			</div>

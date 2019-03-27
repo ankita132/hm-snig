@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Layout, Menu, Button, Table, Modal, Input } from "antd";
+import { Layout, Menu, Button, Table, Modal, Input, List, Icon } from "antd";
 const { Header, Content, Sider } = Layout;
 const { TextArea } = Input;
 const status = ["Approved", "Pending", "Pending", "Rejected"];
@@ -9,6 +9,7 @@ class Admin extends Component {
 		this.state = {
 			visible: false,
 			visible2: false,
+			visible3: false,
 			imageIndex: 0,
 			dataSource: [
 				{
@@ -18,7 +19,10 @@ class Admin extends Component {
 					purpose: "no idea",
 					gst: "1234",
 					view: <Button onClick={() => this.showModal(0)}>View Bill</Button>,
-					status: this.getStatus(0)
+					status: this.getStatus(0),
+					vstatus: (
+						<Button onClick={() => this.showModal3()}>Verifications</Button>
+					)
 				},
 				{
 					key: "1",
@@ -27,7 +31,10 @@ class Admin extends Component {
 					purpose: "no idea",
 					gst: "1234qwq",
 					view: <Button onClick={() => this.showModal(1)}>View Bill</Button>,
-					status: this.getStatus(1)
+					status: this.getStatus(1),
+					vstatus: (
+						<Button onClick={() => this.showModal3()}>Verifications</Button>
+					)
 				},
 				{
 					key: "2",
@@ -36,7 +43,10 @@ class Admin extends Component {
 					purpose: "no no idea",
 					gst: "123412",
 					view: <Button onClick={() => this.showModal(2)}>View Bill</Button>,
-					status: this.getStatus(2)
+					status: this.getStatus(2),
+					vstatus: (
+						<Button onClick={() => this.showModal3()}>Verifications</Button>
+					)
 				},
 				{
 					key: "3",
@@ -45,14 +55,17 @@ class Admin extends Component {
 					purpose: "no no no idea",
 					gst: "12",
 					view: <Button onClick={() => this.showModal(3)}>View Bill</Button>,
-					status: this.getStatus(3)
+					status: this.getStatus(3),
+					vstatus: (
+						<Button onClick={() => this.showModal3()}>Verifications</Button>
+					)
 				}
 			],
 			img: [
-				"https://pay.google.com/about/static/images/social/knowledge_graph_logo.png",
-				"https://pay.google.com/about/static/images/social/knowledge_graph_logo.png",
-				"https://pay.google.com/about/static/images/social/knowledge_graph_logo.png",
-				"https://pay.google.com/about/static/images/social/knowledge_graph_logo.png"
+				"http://www.uppclonline.com/en_GB/images/innerpages/login/bill_sample.jpg",
+				"http://www.uppclonline.com/en_GB/images/innerpages/login/bill_sample.jpg",
+				"http://www.uppclonline.com/en_GB/images/innerpages/login/bill_sample.jpg",
+				"http://www.uppclonline.com/en_GB/images/innerpages/login/bill_sample.jpg"
 			],
 			columns: [
 				{
@@ -84,6 +97,33 @@ class Admin extends Component {
 					title: "Status",
 					dataIndex: "status",
 					key: "status"
+				},
+				{
+					title: "Verification Status",
+					dataIndex: "vstatus",
+					key: "vstatus"
+				}
+			],
+			data: [
+				{
+					name: "Verified by G. Sec Social and Cultural",
+					status: true
+				},
+				{
+					name: "Verified by the concerned PTI",
+					status: false
+				},
+				{
+					name: "Hard copy submitted",
+					status: false
+				},
+				{
+					name: "Verified by the Registrar",
+					status: true
+				},
+				{
+					name: "Verified by the President TSG",
+					status: true
 				}
 			],
 			index: 0
@@ -105,6 +145,11 @@ class Admin extends Component {
 				return;
 		}
 	};
+	showModal3 = () => {
+		this.setState({
+			visible3: true
+		});
+	};
 	showModal = k => {
 		this.setState({
 			visible: true,
@@ -121,7 +166,8 @@ class Admin extends Component {
 		console.log(e);
 		this.setState({
 			visible: false,
-			visible2: false
+			visible2: false,
+			visible3: false
 		});
 	};
 
@@ -129,7 +175,8 @@ class Admin extends Component {
 		console.log(e);
 		this.setState({
 			visible: false,
-			visible2: false
+			visible2: false,
+			visible3: false
 		});
 	};
 	updateStatus = check => {
@@ -139,7 +186,7 @@ class Admin extends Component {
 			this.setState(stateCopy);
 			this.handleCancel();
 		} else {
-			var stateCopy = Object.assign({}, this.state);
+			let stateCopy = Object.assign({}, this.state);
 			stateCopy.dataSource[this.state.index].status = "Rejected";
 			this.setState(stateCopy);
 			this.handleCancel();
@@ -209,6 +256,40 @@ class Admin extends Component {
 											Reject
 										</Button>
 									</div>
+								</Modal>
+								<Modal
+									title="Verification Status"
+									visible={this.state.visible3}
+									onOk={this.handleOk}
+									onCancel={this.handleCancel}
+								>
+									<List
+										dataSource={this.state.data}
+										renderItem={item => (
+											<List.Item key={item.name}>
+												<List.Item.Meta title={<h2>{item.name}</h2>} />
+												<div>
+													{item.status ? (
+														<Icon
+															type="check-circle"
+															theme="filled"
+															style={{ color: "green" }}
+														/>
+													) : (
+														<div>
+															<Button
+																type="primary"
+																style={{ marginRight: 10 }}
+															>
+																Approve
+															</Button>
+															<Button>Reject</Button>
+														</div>
+													)}
+												</div>
+											</List.Item>
+										)}
+									/>
 								</Modal>
 							</Content>
 						</Layout>
