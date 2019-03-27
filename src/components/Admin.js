@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Layout, Menu, Button, Table, Modal, Input, List, Icon } from "antd";
 const { Header, Content, Sider } = Layout;
 const { TextArea } = Input;
-const status = ["Approved", "Pending", "Pending", "Rejected"];
+const status = ["Approved", "Pending", "Pending", "Declined"];
 class Admin extends Component {
 	constructor() {
 		super();
@@ -10,55 +10,144 @@ class Admin extends Component {
 			visible: false,
 			visible2: false,
 			visible3: false,
+			verifyindex: 0,
 			imageIndex: 0,
 			dataSource: [
 				{
-					key: "0",
-					name: "Mike",
-					vname: "lol",
-					purpose: "no idea",
+					key: "1",
+					name: "Aman",
+					vname: "Sikandar Sounds",
+					purpose: "Production",
 					gst: "1234",
 					view: <Button onClick={() => this.showModal(0)}>View Bill</Button>,
 					status: this.getStatus(0),
 					vstatus: (
-						<Button onClick={() => this.showModal3()}>Verifications</Button>
-					)
-				},
-				{
-					key: "1",
-					name: "Mike221212",
-					vname: "lol34",
-					purpose: "no idea",
-					gst: "1234qwq",
-					view: <Button onClick={() => this.showModal(1)}>View Bill</Button>,
-					status: this.getStatus(1),
-					vstatus: (
-						<Button onClick={() => this.showModal3()}>Verifications</Button>
-					)
+						<Button onClick={() => this.showModal3(0)}>Verifications</Button>
+					),
+					data: [
+						{
+							name: "Verified by G. Sec Social and Cultural",
+							status: true
+						},
+						{
+							name: "Verified by the concerned PTI",
+							status: true
+						},
+						{
+							name: "Hard copy submitted",
+							status: true
+						},
+						{
+							name: "Verified by the Registrar",
+							status: true
+						},
+						{
+							name: "Verified by the President TSG",
+							status: true
+						}
+					]
 				},
 				{
 					key: "2",
-					name: "Kasasa",
-					vname: "lol2",
-					purpose: "no no idea",
+					name: "Yash Khetan",
+					vname: "Chowdhary Costumes",
+					purpose: "Production costumes",
 					gst: "123412",
-					view: <Button onClick={() => this.showModal(2)}>View Bill</Button>,
-					status: this.getStatus(2),
+					view: <Button onClick={() => this.showModal(1)}>View Bill</Button>,
+					status: this.getStatus(1),
 					vstatus: (
-						<Button onClick={() => this.showModal3()}>Verifications</Button>
-					)
+						<Button onClick={() => this.showModal3(1)}>Verifications</Button>
+					),
+					data: [
+						{
+							name: "Verified by G. Sec Social and Cultural",
+							status: true
+						},
+						{
+							name: "Verified by the concerned PTI",
+							status: true
+						},
+						{
+							name: "Hard copy submitted",
+							status: false
+						},
+						{
+							name: "Verified by the Registrar",
+							status: false
+						},
+						{
+							name: "Verified by the President TSG",
+							status: false
+						}
+					]
 				},
 				{
 					key: "3",
-					name: "sed",
-					vname: "lol3",
-					purpose: "no no no idea",
+					name: "Siddarth",
+					vname: "Jyotsna Carpenter",
+					purpose: "Sets",
+					gst: "12",
+					view: <Button onClick={() => this.showModal(2)}>View Bill</Button>,
+					status: this.getStatus(2),
+					vstatus: (
+						<Button onClick={() => this.showModal3(2)}>Verifications</Button>
+					),
+					data: [
+						{
+							name: "Verified by G. Sec Social and Cultural",
+							status: true
+						},
+						{
+							name: "Verified by the concerned PTI",
+							status: true
+						},
+						{
+							name: "Hard copy submitted",
+							status: true
+						},
+						{
+							name: "Verified by the Registrar",
+							status: false
+						},
+						{
+							name: "Verified by the President TSG",
+							status: false
+						}
+					]
+				},
+				{
+					key: "3",
+					name: "Rahul",
+					vname: "Usha Printer",
+					purpose: "Annual Magazine",
 					gst: "12",
 					view: <Button onClick={() => this.showModal(3)}>View Bill</Button>,
 					status: this.getStatus(3),
 					vstatus: (
-						<Button onClick={() => this.showModal3()}>Verifications</Button>
-					)
+						<Button onClick={() => this.showModal3(3)}>Verifications</Button>
+					),
+					data: [
+						{
+							name: "Verified by G. Sec Social and Cultural",
+							status: true
+						},
+						{
+							name: "Verified by the concerned PTI",
+							status: true
+						},
+						{
+							name: "Hard copy submitted",
+							status: true
+						},
+						{
+							name: "Verified by the Registrar",
+							status: true
+						},
+						{
+							name: "Verified by the President TSG",
+							status: true
+						}
+					]
 				}
 			],
 			img: [
@@ -67,6 +156,7 @@ class Admin extends Component {
 				"http://www.uppclonline.com/en_GB/images/innerpages/login/bill_sample.jpg",
 				"http://www.uppclonline.com/en_GB/images/innerpages/login/bill_sample.jpg"
 			],
+			verify: "",
 			columns: [
 				{
 					title: "Name",
@@ -104,28 +194,6 @@ class Admin extends Component {
 					key: "vstatus"
 				}
 			],
-			data: [
-				{
-					name: "Verified by G. Sec Social and Cultural",
-					status: true
-				},
-				{
-					name: "Verified by the concerned PTI",
-					status: false
-				},
-				{
-					name: "Hard copy submitted",
-					status: false
-				},
-				{
-					name: "Verified by the Registrar",
-					status: true
-				},
-				{
-					name: "Verified by the President TSG",
-					status: true
-				}
-			],
 			index: 0
 		};
 	}
@@ -133,8 +201,8 @@ class Admin extends Component {
 		switch (status[key]) {
 			case "Approved":
 				return "Approved";
-			case "Rejected":
-				return "Rejected";
+			case "Declined":
+				return "Declined";
 			case "Pending":
 				return (
 					<Button type="primary" onClick={() => this.showModal2(key)}>
@@ -145,9 +213,11 @@ class Admin extends Component {
 				return;
 		}
 	};
-	showModal3 = () => {
+	showModal3 = key => {
+		let data = this.state.dataSource[key].data;
 		this.setState({
-			visible3: true
+			visible3: true,
+			verify: data
 		});
 	};
 	showModal = k => {
@@ -187,7 +257,7 @@ class Admin extends Component {
 			this.handleCancel();
 		} else {
 			let stateCopy = Object.assign({}, this.state);
-			stateCopy.dataSource[this.state.index].status = "Rejected";
+			stateCopy.dataSource[this.state.index].status = "Declined";
 			this.setState(stateCopy);
 			this.handleCancel();
 		}
@@ -264,7 +334,7 @@ class Admin extends Component {
 									onCancel={this.handleCancel}
 								>
 									<List
-										dataSource={this.state.data}
+										dataSource={this.state.verify}
 										renderItem={item => (
 											<List.Item key={item.name}>
 												<List.Item.Meta title={<h2>{item.name}</h2>} />
@@ -281,9 +351,8 @@ class Admin extends Component {
 																type="primary"
 																style={{ marginRight: 10 }}
 															>
-																Approve
+																Verify
 															</Button>
-															<Button>Reject</Button>
 														</div>
 													)}
 												</div>

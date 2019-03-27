@@ -8,48 +8,116 @@ class Student extends Component {
 			visible: false,
 			visible3: false,
 			imageIndex: 0,
+			verifyindex: 0,
+			verify: "",
 			dataSource: [
 				{
 					key: "1",
-					name: "Mike",
-					vname: "lol",
-					purpose: "no idea",
+					name: "Aman",
+					vname: "Sikandar Sounds",
+					purpose: "Production",
 					gst: "1234",
 					view: <Button onClick={() => this.showModal(0)}>View Bill</Button>,
 					status: "Approved",
 					vstatus: (
-						<Button onClick={() => this.showModal3()}>Verifications</Button>
-					)
+						<Button onClick={() => this.showModal3(0)}>Verifications</Button>
+					),
+					data: [
+						{
+							name: "Verified by G. Sec Social and Cultural",
+							status: true
+						},
+						{
+							name: "Verified by the concerned PTI",
+							status: true
+						},
+						{
+							name: "Hard copy submitted",
+							status: true
+						},
+						{
+							name: "Verified by the Registrar",
+							status: true
+						},
+						{
+							name: "Verified by the President TSG",
+							status: true
+						}
+					]
 				},
 				{
 					key: "2",
-					name: "Kasasa",
-					vname: "lol2",
-					purpose: "no no idea",
+					name: "Yash Khetan",
+					vname: "Chowdhary Costumes",
+					purpose: "Production costumes",
 					gst: "123412",
 					view: <Button onClick={() => this.showModal(1)}>View Bill</Button>,
 					status: "Declined",
 					vstatus: (
-						<Button onClick={() => this.showModal3()}>Verifications</Button>
-					)
+						<Button onClick={() => this.showModal3(1)}>Verifications</Button>
+					),
+					data: [
+						{
+							name: "Verified by G. Sec Social and Cultural",
+							status: true
+						},
+						{
+							name: "Verified by the concerned PTI",
+							status: true
+						},
+						{
+							name: "Hard copy submitted",
+							status: false
+						},
+						{
+							name: "Verified by the Registrar",
+							status: false
+						},
+						{
+							name: "Verified by the President TSG",
+							status: false
+						}
+					]
 				},
 				{
 					key: "3",
-					name: "sed",
-					vname: "lol3",
-					purpose: "no no no idea",
+					name: "Siddarth",
+					vname: "Jyotsna Carpenter",
+					purpose: "Sets",
 					gst: "12",
 					view: <Button onClick={() => this.showModal(2)}>View Bill</Button>,
 					status: "Pending",
 					vstatus: (
-						<Button onClick={() => this.showModal3()}>Verifications</Button>
-					)
+						<Button onClick={() => this.showModal3(2)}>Verifications</Button>
+					),
+					data: [
+						{
+							name: "Verified by G. Sec Social and Cultural",
+							status: true
+						},
+						{
+							name: "Verified by the concerned PTI",
+							status: true
+						},
+						{
+							name: "Hard copy submitted",
+							status: true
+						},
+						{
+							name: "Verified by the Registrar",
+							status: false
+						},
+						{
+							name: "Verified by the President TSG",
+							status: false
+						}
+					]
 				}
 			],
 			img: [
-				"http://www.uppclonline.com/en_GB/images/innerpages/login/bill_sample.jpg",
-				"http://www.uppclonline.com/en_GB/images/innerpages/login/bill_sample.jpg",
-				"http://www.uppclonline.com/en_GB/images/innerpages/login/bill_sample.jpg"
+				"https://www.cesc.co.in/ptrlineins/imags/Service-Charge-Bill.png",
+				"https://www.cesc.co.in/ptrlineins/imags/Service-Charge-Bill.png",
+				"https://www.cesc.co.in/ptrlineins/imags/Service-Charge-Bill.png"
 			],
 			columns: [
 				{
@@ -63,12 +131,12 @@ class Student extends Component {
 					key: "vname"
 				},
 				{
-					title: "purpose",
+					title: "Purpose",
 					dataIndex: "purpose",
 					key: "purpose"
 				},
 				{
-					title: "gst number",
+					title: "GST Number",
 					dataIndex: "gst",
 					key: "gst"
 				},
@@ -87,34 +155,14 @@ class Student extends Component {
 					dataIndex: "vstatus",
 					key: "vstatus"
 				}
-			],
-			data: [
-				{
-					name: "Verified by G. Sec Social and Cultural",
-					status: true
-				},
-				{
-					name: "Verified by the concerned PTI",
-					status: false
-				},
-				{
-					name: "Hard copy submitted",
-					status: false
-				},
-				{
-					name: "Verified by the Registrar",
-					status: true
-				},
-				{
-					name: "Verified by the President TSG",
-					status: true
-				}
 			]
 		};
 	}
-	showModal3 = () => {
+	showModal3 = key => {
+		let data = this.state.dataSource[key].data;
 		this.setState({
-			visible3: true
+			visible3: true,
+			verify: data
 		});
 	};
 	showModal = k => {
@@ -165,7 +213,7 @@ class Student extends Component {
 					onCancel={this.handleCancel}
 				>
 					<List
-						dataSource={this.state.data}
+						dataSource={this.state.verify}
 						renderItem={item => (
 							<List.Item key={item.name}>
 								<List.Item.Meta title={<h2>{item.name}</h2>} />

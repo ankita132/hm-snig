@@ -43,8 +43,11 @@ class Bill extends Component {
 					<Form.Item label="Purpose" {...formItemLayout}>
 						<Input placeholder="Purpose" />
 					</Form.Item>
+					<Form.Item label="Amount" {...formItemLayout}>
+						<Input placeholder="Amount" />
+					</Form.Item>
 					<Form.Item label="Upload" {...formItemLayout}>
-						<Upload name="logo" action="/upload.do" listType="picture">
+						<Upload name="logo" listType="picture">
 							<Button>
 								<Icon type="upload" /> Click to upload
 							</Button>
