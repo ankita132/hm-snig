@@ -1,15 +1,15 @@
 {
-  "main.css": "/nehru-hall/static/css/main.e34c3abf.chunk.css",
-  "main.js": "/nehru-hall/static/js/main.4d10e97e.chunk.js",
-  "main.js.map": "/nehru-hall/static/js/main.4d10e97e.chunk.js.map",
+  "main.css": "/nehru-hall/static/css/main.a250148d.chunk.css",
+  "main.js": "/nehru-hall/static/js/main.3d28e133.chunk.js",
+  "main.js.map": "/nehru-hall/static/js/main.3d28e133.chunk.js.map",
   "runtime~main.js": "/nehru-hall/static/js/runtime~main.62e50522.js",
   "runtime~main.js.map": "/nehru-hall/static/js/runtime~main.62e50522.js.map",
   "static/css/2.f359485a.chunk.css": "/nehru-hall/static/css/2.f359485a.chunk.css",
   "static/js/2.e697a78a.chunk.js": "/nehru-hall/static/js/2.e697a78a.chunk.js",
   "static/js/2.e697a78a.chunk.js.map": "/nehru-hall/static/js/2.e697a78a.chunk.js.map",
   "index.html": "/nehru-hall/index.html",
-  "precache-manifest.799decc818e6593280611cea628c30dc.js": "/nehru-hall/precache-manifest.799decc818e6593280611cea628c30dc.js",
+  "precache-manifest.d2c5a3f033149228f553262246b9b8a0.js": "/nehru-hall/precache-manifest.d2c5a3f033149228f553262246b9b8a0.js",
   "service-worker.js": "/nehru-hall/service-worker.js",
   "static/css/2.f359485a.chunk.css.map": "/nehru-hall/static/css/2.f359485a.chunk.css.map",
-  "static/css/main.e34c3abf.chunk.css.map": "/nehru-hall/static/css/main.e34c3abf.chunk.css.map"
+  "static/css/main.a250148d.chunk.css.map": "/nehru-hall/static/css/main.a250148d.chunk.css.map"
 }
