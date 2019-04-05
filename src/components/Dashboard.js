@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Layout, Menu } from "antd";
-import Student from "./Student";
-import Bill from "./Bill";
+import Videos from "./Videos";
+import Settings from "./Settings";
+import Homepage from "./Homepage";
 const { Header, Content, Sider } = Layout;
 
 class Dashboard extends Component {
@@ -16,7 +17,18 @@ class Dashboard extends Component {
 			selected: check
 		});
 	};
+	RenderContent = () => {
+		if (this.state.selected === 1) {
+			return <Homepage />;
+		} else if (this.state.selected === 2) {
+			return <Videos />;
+		} else if (this.state.selected === 3) {
+			return <Settings />;
+		}
+		return <Homepage />;
+	};
 	render() {
+		let renderContent = this.RenderContent();
 		return (
 			<div className="studentBox">
 				<Layout>
@@ -31,11 +43,14 @@ class Dashboard extends Component {
 								defaultOpenKeys={["sub1"]}
 								style={{ height: "100%", borderRight: 0 }}
 							>
-								<Menu.Item key="1" onClick={() => this.changeView(true)}>
-									View Bills
+								<Menu.Item key="1" onClick={() => this.changeView(1)}>
+									HomePage
 								</Menu.Item>
-								<Menu.Item key="2" onClick={() => this.changeView(false)}>
-									Add Bills
+								<Menu.Item key="2" onClick={() => this.changeView(2)}>
+									Demo Videos
+								</Menu.Item>
+								<Menu.Item key="3" onClick={() => this.changeView(3)}>
+									Settings
 								</Menu.Item>
 							</Menu>
 						</Sider>
@@ -48,7 +63,7 @@ class Dashboard extends Component {
 									minHeight: 530
 								}}
 							>
-								{this.state.selected ? <Student /> : <Bill />}
+								{renderContent}
 							</Content>
 						</Layout>
 					</Layout>
