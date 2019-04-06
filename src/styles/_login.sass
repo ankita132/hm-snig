@@ -12,3 +12,32 @@
     text-align: center
 .box
     @include h-flex()
+.logo
+    width: 120px
+    height: 31px
+    background: url('./logo.png') no-repeat center center fixed
+    background-size: contain
+    margin: 16px 24px 16px 0
+    float: left
+.homebox   
+    @include h-flex()
+    .ant-card-body
+        position: relative
+        left: 50%
+        transform: translateX(-25%)
+.Inputbox
+    display: flex
+.usage
+    margin: 1em
+.timer
+    @include v-flex()
+    border: 5px solid lightblue
+    border-radius: 50%
+    width: 8em
+    height: 8em
+    text-align: center
+.boxes
+    position: relative
+
+.pain
+    margin: 1em

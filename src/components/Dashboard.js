@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Layout, Menu } from "antd";
 import Videos from "./Videos";
 import Settings from "./Settings";
+import Statistics from "./Statistics";
 import Homepage from "./Homepage";
 const { Header, Content, Sider } = Layout;
 
@@ -21,8 +22,10 @@ class Dashboard extends Component {
 		if (this.state.selected === 1) {
 			return <Homepage />;
 		} else if (this.state.selected === 2) {
-			return <Videos />;
+			return <Statistics />;
 		} else if (this.state.selected === 3) {
+			return <Videos />;
+		} else if (this.state.selected === 4) {
 			return <Settings />;
 		}
 		return <Homepage />;
@@ -47,10 +50,13 @@ class Dashboard extends Component {
 									HomePage
 								</Menu.Item>
 								<Menu.Item key="2" onClick={() => this.changeView(2)}>
-									Demo Videos
+									Statistics
 								</Menu.Item>
 								<Menu.Item key="3" onClick={() => this.changeView(3)}>
-									Settings
+									Demo Videos
+								</Menu.Item>
+								<Menu.Item key="4" onClick={() => this.changeView(4)}>
+									Monitoring
 								</Menu.Item>
 							</Menu>
 						</Sider>
