@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/hm-snig/static/media/1.60477a8d.png"
   },
   {
-    "revision": "590cea69617983accef2",
+    "revision": "b5c531b3d1893874d25c",
     "url": "/hm-snig/static/css/main.42598a4c.chunk.css"
   },
   {
@@ -24,8 +24,8 @@ self.__precacheManifest = [
     "url": "/hm-snig/static/media/logo.2d3bf4fb.png"
   },
   {
-    "revision": "590cea69617983accef2",
-    "url": "/hm-snig/static/js/main.0e17d35d.chunk.js"
+    "revision": "b5c531b3d1893874d25c",
+    "url": "/hm-snig/static/js/main.3dd3ab54.chunk.js"
   },
   {
     "revision": "acdeddcbf31f9af9c5e3882447deb48a",
@@ -48,7 +48,7 @@ self.__precacheManifest = [
     "url": "/hm-snig/static/css/2.f359485a.chunk.css"
   },
   {
-    "revision": "e111294913e2008c6bc1265b844cab4b",
+    "revision": "eadcaab4b61736a093b362789cfe17de",
     "url": "/hm-snig/index.html"
   }
 ];
